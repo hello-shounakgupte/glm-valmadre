@@ -1,0 +1,389 @@
+/* ==========================================================================
+   Valmadre Homes — CRO sections (drop-in)
+   cro-sections.css  ·  vanilla CSS, no dependencies
+   All classes prefixed `vh-` to avoid collisions with Divi/theme classes.
+   Typography inherits from the site body (freight-sans-pro).
+   Palette + type scale mirror the existing design tokens:
+     ink #18191B · bg #FAFAFA · hairline #E4E5E7 · muted #9296A0
+   ========================================================================== */
+
+/* ---------- shared building blocks ---------- */
+.vh-section {
+  background-color: #fafafa;
+  padding: 120px 60px;
+  overflow: hidden;
+}
+.vh-container {
+  max-width: 1646px;
+  margin: 0 auto;
+}
+.vh-eyebrow {
+  font-family: "freight-neo-pro", "freight-sans-pro", Arimo, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  margin: 0 0 24px;
+}
+.vh-h2 {
+  font-family: inherit;
+  font-weight: 300;
+  font-size: clamp(32px, 2.083vw, 40px);
+  line-height: 1.2;
+  margin: 0 0 24px;
+}
+.vh-lead {
+  font-size: clamp(18px, 1.05vw, 20px);
+  line-height: 1.4;
+  max-width: 66ch;
+  margin: 0 0 24px;
+}
+.vh-link-btn {
+  display: inline-block;
+  color: #18191b;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  padding: 0 0 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+.vh-link-btn::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.vh-link-btn:hover::after { transform-origin: right center; transform: scaleX(0); }
+
+/* reveal-on-scroll (mirrors the site's slideBottom 800ms feel) */
+.vh-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+.vh-reveal.vh-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .vh-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   1 · TRUST BAR — stats + awards        (place after the intro split section)
+   ========================================================================== */
+.vh-trust { border-top: 1px solid #e4e5e7; border-bottom: 1px solid #e4e5e7; padding: 72px 60px; background: #fafafa; }
+.vh-trust-grid {
+  max-width: 1646px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+.vh-stat { border-left: 1px solid #e4e5e7; padding-left: 28px; }
+.vh-stat:first-child { border-left: 0; padding-left: 0; }
+.vh-stat-num {
+  font-weight: 300;
+  font-size: clamp(44px, 3vw, 60px);
+  line-height: 1;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+.vh-stat-num sup { font-size: 0.55em; vertical-align: 0.6em; }
+.vh-stat-label {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  color: #18191b;
+  margin: 0;
+}
+.vh-awards {
+  max-width: 1646px;
+  margin: 48px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid #e4e5e7;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 48px;
+  align-items: baseline;
+}
+.vh-awards-label { margin: 0; font-size: 14px; font-weight: 500; }
+.vh-award { margin: 0; font-size: 14px; color: rgba(24, 25, 27, 0.65); }
+.vh-award strong { color: #18191b; font-weight: 500; }
+
+/* ==========================================================================
+   2 · WHY VALMADRE — five values        (place after the services trio)
+   ========================================================================== */
+.vh-why-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px 64px;
+  margin-bottom: 72px;
+}
+.vh-why-head .vh-h2 { max-width: 22ch; margin: 0; }
+.vh-why-head .vh-lead { max-width: 52ch; margin: 0; }
+.vh-values {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+}
+.vh-value {
+  border-top: 1px solid #e4e5e7;
+  padding: 28px 0 0;
+}
+.vh-value-icon { height: 44px; margin-bottom: 20px; }
+.vh-value-icon svg { height: 100%; width: auto; stroke: #18191b; }
+.vh-value h3 {
+  font-weight: 500;
+  font-size: clamp(16px, 1vw, 20px);
+  margin: 0 0 10px;
+}
+.vh-value p {
+  font-size: clamp(14px, 0.85vw, 16px);
+  line-height: 1.55;
+  color: rgba(24, 25, 27, 0.72);
+  margin: 0;
+}
+
+/* ==========================================================================
+   3 · TESTIMONIALS — dark ink band      (place after featured projects)
+   ========================================================================== */
+.vh-testimonials {
+  background: #18191b;
+  color: #fff;
+  padding: 120px 60px;
+}
+.vh-testimonials .vh-eyebrow { color: #fff; }
+.vh-testi-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px 64px;
+  margin-bottom: 56px;
+}
+.vh-testi-head .vh-h2 { color: #fff; max-width: 20ch; margin: 0; }
+.vh-testi-nav { display: flex; align-items: center; gap: 28px; }
+.vh-testi-count { font-size: 14px; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.6); font-variant-numeric: tabular-nums; }
+.vh-arrow {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, border-color 0.3s;
+  padding: 0;
+}
+.vh-arrow:hover { background: #fff; border-color: #fff; color: #18191b; }
+.vh-arrow svg { display: block; }
+.vh-arrow:disabled { opacity: 0.35; cursor: default; }
+.vh-arrow:disabled:hover { background: transparent; border-color: rgba(255, 255, 255, 0.35); color: #fff; }
+
+.vh-testi-viewport { overflow: hidden; }
+.vh-testi-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.vh-testi-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-right: 8%;
+  box-sizing: border-box;
+}
+.vh-quote-mark { font-size: 60px; line-height: 1; font-weight: 300; color: rgba(255, 255, 255, 0.4); display: block; margin-bottom: 8px; }
+.vh-testi-quote {
+  font-size: clamp(20px, 1.25vw, 24px);
+  line-height: 1.5;
+  font-weight: 300;
+  color: #fff;
+  margin: 0 0 32px;
+  max-width: 30em;
+}
+.vh-testi-attr { margin: 0; font-size: 15px; }
+.vh-testi-attr strong { font-weight: 500; color: #fff; }
+.vh-testi-attr span { color: rgba(255, 255, 255, 0.6); }
+.vh-testi-cta { margin-top: 56px; }
+.vh-testi-cta .vh-link-btn { color: #fff; }
+
+/* ==========================================================================
+   4 · PROCESS — five steps              (place after testimonials)
+   ========================================================================== */
+.vh-process-head { max-width: 900px; margin-bottom: 72px; }
+.vh-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  counter-reset: vhstep;
+}
+.vh-step { border-top: 1px solid #e4e5e7; padding: 28px 0 0; }
+.vh-step-num {
+  font-weight: 300;
+  font-size: clamp(40px, 2.6vw, 52px);
+  line-height: 1;
+  color: rgba(24, 25, 27, 0.22);
+  margin: 0 0 18px;
+  font-variant-numeric: tabular-nums;
+}
+.vh-step h3 { font-weight: 500; font-size: clamp(16px, 1vw, 20px); margin: 0 0 10px; }
+.vh-step p { font-size: clamp(14px, 0.85vw, 16px); line-height: 1.55; color: rgba(24, 25, 27, 0.72); margin: 0; }
+
+/* ==========================================================================
+   5 · FAQ — accordion                   (place before the final CTA)
+   ========================================================================== */
+.vh-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 5fr) 7fr;
+  gap: 40px 96px;
+  align-items: start;
+}
+.vh-faq-side { position: sticky; top: 140px; }
+.vh-faq-side .vh-lead { margin-bottom: 28px; }
+.vh-faq-list { border-top: 1px solid #e4e5e7; }
+.vh-faq-item { border-bottom: 1px solid #e4e5e7; }
+.vh-faq-q {
+  width: 100%;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  text-align: left;
+  padding: 26px 0;
+  font-family: inherit;
+  font-size: clamp(17px, 1.05vw, 20px);
+  font-weight: 400;
+  color: #18191b;
+  line-height: 1.4;
+}
+.vh-faq-icon {
+  position: relative;
+  flex: 0 0 14px;
+  height: 14px;
+}
+.vh-faq-icon::before, .vh-faq-icon::after {
+  content: "";
+  position: absolute;
+  background: #18191b;
+  transition: transform 0.3s;
+}
+.vh-faq-icon::before { left: 0; top: 6px; width: 14px; height: 1.5px; }
+.vh-faq-icon::after { left: 6px; top: 0; width: 1.5px; height: 14px; }
+.vh-faq-item.open .vh-faq-icon::after { transform: scaleY(0); }
+.vh-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.vh-faq-a p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(24, 25, 27, 0.72);
+  margin: 0;
+  padding: 0 60px 28px 0;
+}
+
+/* ==========================================================================
+   6 · STICKY MOBILE CALL BAR            (fixed, mobile only)
+   ========================================================================== */
+.vh-callbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 97;
+  display: none;
+  gap: 10px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  background: #fafafa;
+  border-top: 1px solid #e4e5e7;
+  transform: translateY(110%);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.vh-callbar.vh-show { transform: none; }
+.vh-callbar-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 13px 12px;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.vh-callbar-btn svg { flex: 0 0 auto; }
+.vh-callbar-solid { background: #18191b; color: #fff; }
+.vh-callbar-ghost { border: 1px solid #18191b; color: #18191b; background: transparent; }
+
+/* ==========================================================================
+   7 · OPTIONAL — secondary phone button beside the existing CTA
+   Used by sections/07-optional-cta-phone.html
+   ========================================================================== */
+.vh-cta-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.vh-pill-ghost {
+  display: inline-block;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 20px;
+  padding: 15px 31px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+.vh-pill-ghost:hover { background: #fff; color: #18191b; }
+@media (max-width: 767px) {
+  .vh-pill-ghost { font-size: 18px; padding: 13px 26px; }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (min-width: 981px) and (max-width: 1400px) {
+  .vh-values { grid-template-columns: repeat(3, 1fr); }
+  .vh-steps { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 980px) {
+  .vh-section, .vh-trust, .vh-testimonials { padding-left: 24px; padding-right: 24px; }
+  .vh-section { padding-top: 72px; padding-bottom: 72px; }
+  .vh-trust { padding-top: 48px; padding-bottom: 48px; }
+  .vh-testimonials { padding-top: 80px; padding-bottom: 80px; }
+  .vh-trust-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+  .vh-stat:nth-child(3) { border-left: 0; padding-left: 0; }
+  .vh-why-head { margin-bottom: 48px; }
+  .vh-values { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; margin-bottom: 8px; }
+  .vh-testi-slide { padding-right: 0; }
+  .vh-testi-head { margin-bottom: 40px; }
+  .vh-process-head { margin-bottom: 48px; }
+  .vh-steps { grid-template-columns: 1fr; gap: 32px; }
+  .vh-faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .vh-faq-side { position: static; }
+  .vh-faq-q { padding: 20px 0; }
+  .vh-faq-a p { padding-right: 24px; }
+}
+@media (max-width: 767px) {
+  .vh-callbar { display: flex; }
+  /* keep the sticky bar from covering page content */
+  body.vh-has-callbar { padding-bottom: 76px; }
+}
+@media (max-width: 600px) {
+  .vh-values, .vh-trust-grid { grid-template-columns: 1fr; }
+  .vh-stat { border-left: 0; padding-left: 0; }
+  .vh-awards { gap: 10px 24px; }
+}
+@media (max-width: 374px) {
+  .vh-callbar-btn { font-size: 14px; gap: 6px; }
+}
